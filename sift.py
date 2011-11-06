@@ -74,7 +74,7 @@ def match(desc1,desc2):
         input: desc1 (matrix with descriptors for first image), 
         desc2 (same for second image)"""
     
-    dist_ratio = 0.8 # 0.6 0.7 0.8
+    dist_ratio = 0.6 # 0.6 0.7? 0.8?
     desc1_size = desc1.shape    
     
     matchscores = zeros((desc1_size[0],1))
@@ -138,6 +138,7 @@ def plot_matches(im1,im2,locs1,locs2,matchscores):
         mscore = int(matchscores[i])
         if mscore > 0:
             color = str(random.sample(colors, 1)[0])
-            pylab.plot([locs1[i,1], locs2[mscore,1]+cols1], [locs1[i,0], locs2[mscore,0]], color)
+            # pylab.plot([locs1[i,1], locs2[mscore,1]+cols1], [locs1[i,0], locs2[mscore,0]], color)
+            pylab.plot([locs1[i,1], locs2[int(matchscores[i]),1]+cols1], [locs1[i,0], locs2[int(matchscores[i]),0]], color)
     pylab.axis('off')
     pylab.show()

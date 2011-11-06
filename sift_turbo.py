@@ -155,8 +155,8 @@ def get_kpm_string(img1,img2,mode='string',less=0, from_index=-1, to_index=-1):
     img2 = ImageObject(img2)
     
     i1,i2,m,q,mp = get_kpm(img1,img2, mode,less, from_index, to_index)
-    image_module.remove_tempfiles(img1)
-    image_module.remove_tempfiles(img2)
+    image_module.remove_temp_files_img(img1)
+    image_module.remove_temp_files_img(img2)
     
     return i1,i2,m,q,mp
     
@@ -169,7 +169,7 @@ def plot_kp(img, mode='string'):
     loc, desc = get_descriptors(img)
     im = get_image_as_array(img)
     sift.plot_features(im,loc)
-    image_module.remove_tempfiles(img)
+    image_module.remove_temp_files_img(img)
     
 def plot_kpm(img1,img2,mode='string',less=0, from_index=-1, to_index=-1):
     if mode == 'string':
@@ -181,6 +181,6 @@ def plot_kpm(img1,img2,mode='string',less=0, from_index=-1, to_index=-1):
     loc2, desc2 = get_descriptors(img2)
     
     sift.plot_matches(im1,im2,loc1,loc2,matchscores)
-    image_module.remove_tempfiles(img1)
-    image_module.remove_tempfiles(img2)
+    image_module.remove_temp_files_img(img1)
+    image_module.remove_temp_files_img(img2)
     

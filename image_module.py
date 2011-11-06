@@ -3,12 +3,13 @@ import math
 from PIL import Image
 import ImageFont, ImageDraw
 import settings
+import re
 
 # image resize bug workaround!
 import ImageFile
 ImageFile.MAXBLOCK = 1000000 # default is 64k
 
-from sift_turbo import make_keypoints, get_descriptors
+import sift_turbo
 
 def video_to_frames(video,fps):
     if settings.is_win:
@@ -87,8 +88,8 @@ def prepare_img_for_sift(img):
     if not (img.filename_pgm and os.path.exists(img.filename_pgm)):
         img = convert_to_pgm(img)
     if not (img.filename_keypoints and os.path.exists(img.filename_keypoints)):
-        img = make_keypoints(img)
-    loc, desc = get_descriptors(img)
+        img = sift_turbo.make_keypoints(img)
+    loc, desc = sift_turbo.get_descriptors(img)
     img.loc = loc
     img.desc = desc
     return img

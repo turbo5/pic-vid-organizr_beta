@@ -527,7 +527,7 @@ class KMeans(ClusteringAlgorithm):
                                         print '\n(', co, 'of approx.', total_attempts, ') matching attempt'
                                         loc_desc1 = (source.loc, source.desc)
                                         loc_desc2 = (compared.loc, compared.desc)
-                                        im1, im2, mscores,qom,mpercent = sift_turbo.get_kpm(loc_desc1, loc_desc2, mode='only_match')
+                                        im1, im2, mscores,qom,mpercent = get_kpm(loc_desc1, loc_desc2, mode='only_match')
                                         if qom > settings.QOM_minimum:
                                             if verbose: print 'matched images:', source.get_only_filename(), '<->', compared.get_only_filename()
                                             matches_num += 1
@@ -542,12 +542,16 @@ class KMeans(ClusteringAlgorithm):
                                         if source.matched and (source.matched.get_only_filename() == compared.get_only_filename()):
                                             if source.matching_qom <= qom:    
                                                 if not source.matched in cluster:
+                                                    # mikor rakjuk at masik clusterbe?:
+                                                    '''
                                                     dist_fromClusterRefpoint = source.get_distance(self.get_ref_point(cluster))
                                                     dist_toClusterRefpoint = source.get_distance(self.get_ref_point(cluster2))
-                                                    if dist_fromClusterRefpoint > dist_toClusterRefpoint:
-                                                        if verbose: print "* Image flagged to move"                                                    
-                                                        source.flag_move_from_clusternum = counter_source_cluster
-                                                        source.flag_move_to_clusternum = counter_compared_cluster
+                                                    '''
+                                                    # print cluster[0].get_only_filename(),dist_fromClusterRefpoint,cluster2[0].get_only_filename(),dist_toClusterRefpoint
+                                                    '''if dist_fromClusterRefpoint > dist_toClusterRefpoint:'''
+                                                    if verbose: print "* Image flagged to move"                                                    
+                                                    source.flag_move_from_clusternum = counter_source_cluster
+                                                    source.flag_move_to_clusternum = counter_compared_cluster
                                     source.was_matched_with.append(compared.get_only_filename())                                  
                                     
         # reclustering

@@ -11,8 +11,8 @@ DATE_MAX = 24*3600
 
 # minden "ennyiedik" objektumot probal a SIFT matchelni, source es compared kepekbol
 # 0 0 , 1 1 , eseten mindent mindennel, k*(k-1)/2
-LESS_MATCHES_ATTEMPT_SOURCE = 2
-LESS_MATCHES_ATTEMPT_COMPARED = 2
+LESS_MATCHES_ATTEMPT_SOURCE = 1
+LESS_MATCHES_ATTEMPT_COMPARED = 1
 
 # keypoints(img1)/keypoints(img2) aranya, R, ha kicsi, pontatlan lehet a matching!
 # R < 1 JO ; R > 1 ROSSZ ... telenor SIFT doksi alapjan.
@@ -111,9 +111,9 @@ WEIGHTS = {
     "EXIF FNumber":2,
     "EXIF FocalLengthIn35mmFilm":3,
     #"EXIF ISOSpeedRatings":2,
-    "sum2":2,
-    "mean":4,
+    "sum2":6,
+    "mean":3,
     "median":2,
     "rms":3,
-    "var":6
+    "var":3
 }
