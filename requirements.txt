@@ -1,0 +1,9 @@
+Pyton
+PIL
+numpy
+scipy
+matplotlib
+
+for some demos:
+ipython
+pyreadline(on windows)
